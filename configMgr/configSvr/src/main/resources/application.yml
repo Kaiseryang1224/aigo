@@ -1,0 +1,12 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: configSvr
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitlab.com/drd-ctbc/aigo.git
+          searchPaths: /configMgr/config/
+          force-pull: true
