@@ -1,0 +1,17 @@
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    lettuce:
+      pool:
+        # 連接池最大連接數（使用負值表示沒有限制）
+        max-active: 8
+        # 連接池最大阻塞等待時間（使用負值表示沒有限制）
+        max-wait: 1000
+        # 連接池中的最大空閒連接
+        max-idle: 8
+        # 連接池中的最小空閒連接
+        min-idle: 0
+        # 關閉超時時間
+        shutdown-timeout: 100

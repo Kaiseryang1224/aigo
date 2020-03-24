@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: hrbot # 自定義的路由 ID，保持唯一
+        uri: http://localhost:8081/api/hrbot/query # 目標服務位址
+        predicates: # 路由條件，Predicate 接受一個輸入参數，返回一個布林值结果。該接口包含多種默認方法
+        - Path=/hrbot/query
+        filters:
+        - name: RequestRateLimiter
+          args:
+            redis-rate-limiter.replenishRate: 10
+            redis-rate-limiter.burstCapacity: 20
+        - name: RequestSize
+          args:
+            maxSize: 5000000 # bits, 5000000 ~= 5000Kb
